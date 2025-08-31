@@ -258,7 +258,97 @@
 
             </div>
           </div>
+        </div>
 
+        <!-- ======= Workshop Gallery Section ======= -->
+        <div class="row mt-5">
+          <div class="col-12">
+            <div class="workshop-gallery neumorphic">
+              <h3 class="text-center mb-4">
+                <i class="bi bi-camera-fill me-2"></i>
+                Workshop Participation Gallery
+              </h3>
+              <p class="text-center mb-4">Photos captured during various workshops and training sessions</p>
+              
+              <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                  <div class="gallery-image-container">
+                    <img src="assets/img/portfolio/workshop/proof/20250203_25200pmByGPSMapCamera.jpg" 
+                         alt="Workshop Photo 1" 
+                         class="gallery-image"
+                         data-gallery="workshop-gallery"
+                         title="Click to view full image">
+                    <div class="gallery-overlay">
+                      <div class="gallery-overlay-content">
+                        <i class="bi bi-zoom-in"></i>
+                        <p>Click to view</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="gallery-caption">
+                    <small>February 3, 2025</small>
+                  </div>
+                </div>
+
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                  <div class="gallery-image-container">
+                    <img src="assets/img/portfolio/workshop/proof/20240725_41433PMByGPSMapCamera.jpg" 
+                         alt="Workshop Photo 2" 
+                         class="gallery-image"
+                         data-gallery="workshop-gallery"
+                         title="Click to view full image">
+                    <div class="gallery-overlay">
+                      <div class="gallery-overlay-content">
+                        <i class="bi bi-zoom-in"></i>
+                        <p>Click to view</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="gallery-caption">
+                    <small>July 25, 2024</small>
+                  </div>
+                </div>
+
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                  <div class="gallery-image-container">
+                    <img src="assets/img/portfolio/workshop/proof/20240309_170343.jpg" 
+                         alt="Workshop Photo 3" 
+                         class="gallery-image"
+                         data-gallery="workshop-gallery"
+                         title="Click to view full image">
+                    <div class="gallery-overlay">
+                      <div class="gallery-overlay-content">
+                        <i class="bi bi-zoom-in"></i>
+                        <p>Click to view</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="gallery-caption">
+                    <small>March 9, 2024</small>
+                  </div>
+                </div>
+
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+                  <div class="gallery-image-container">
+                    <img src="assets/img/portfolio/workshop/proof/Prathushya college.jpg" 
+                         alt="Workshop Photo 4" 
+                         class="gallery-image"
+                         data-gallery="workshop-gallery"
+                         title="Click to view full image">
+                    <div class="gallery-overlay">
+                      <div class="gallery-overlay-content">
+                        <i class="bi bi-zoom-in"></i>
+                        <p>Click to view</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="gallery-caption">
+                    <small>Workshop Session</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -292,6 +382,354 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Custom Gallery Script -->
+  <script>
+    // Initialize AOS animations
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+
+    // Gallery lightbox functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Workshop gallery script loaded');
+      
+      // Try GLightbox first
+      if (typeof GLightbox !== 'undefined') {
+        console.log('GLightbox found, initializing...');
+        try {
+          const lightbox = GLightbox({
+            selector: '.gallery-image',
+            touchNavigation: true,
+            loop: true
+          });
+          console.log('GLightbox initialized successfully');
+        } catch (error) {
+          console.error('GLightbox error:', error);
+          initCustomLightbox();
+        }
+      } else {
+        console.log('GLightbox not found, using custom lightbox');
+        initCustomLightbox();
+      }
+
+      function initCustomLightbox() {
+        console.log('Initializing custom lightbox');
+        const galleryImages = document.querySelectorAll('.gallery-image');
+        
+        galleryImages.forEach((image, index) => {
+          image.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Image clicked:', this.src);
+            openCustomLightbox(this.src, this.alt);
+          });
+        });
+      }
+
+      function openCustomLightbox(imageSrc, imageAlt) {
+        // Create lightbox overlay
+        const lightbox = document.createElement('div');
+        lightbox.className = 'custom-lightbox-overlay';
+        lightbox.innerHTML = `
+          <div class="custom-lightbox-content">
+            <img src="${imageSrc}" alt="${imageAlt}">
+            <button class="custom-lightbox-close">&times;</button>
+          </div>
+        `;
+        
+        // Add lightbox styles
+        const style = document.createElement('style');
+        style.textContent = `
+          .custom-lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+          
+          .custom-lightbox-overlay.show {
+            opacity: 1;
+          }
+          
+          .custom-lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+          }
+          
+          .custom-lightbox-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+            max-height: 90vh;
+          }
+          
+          .custom-lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+          }
+          
+          .custom-lightbox-close:hover {
+            background: rgba(24, 210, 110, 0.8);
+            transform: scale(1.1);
+          }
+        `;
+        
+        document.head.appendChild(style);
+        document.body.appendChild(lightbox);
+        
+        // Show lightbox with animation
+        setTimeout(() => lightbox.classList.add('show'), 10);
+        
+        // Close lightbox functionality
+        const closeLightbox = () => {
+          lightbox.classList.remove('show');
+          setTimeout(() => {
+            document.body.removeChild(lightbox);
+            document.head.removeChild(style);
+          }, 300);
+        };
+        
+        lightbox.addEventListener('click', function(e) {
+          if (e.target === lightbox) {
+            closeLightbox();
+          }
+        });
+        
+        const closeBtn = lightbox.querySelector('.custom-lightbox-close');
+        closeBtn.addEventListener('click', closeLightbox);
+        
+        // Close on Escape key
+        const escapeHandler = function(e) {
+          if (e.key === 'Escape') {
+            closeLightbox();
+            document.removeEventListener('keydown', escapeHandler);
+          }
+        };
+        document.addEventListener('keydown', escapeHandler);
+      }
+    });
+  </script>
+
+  <!-- Custom Gallery Styles -->
+  <style>
+    /* Competition Gallery Styles */
+    .workshop-gallery {
+      padding: 30px;
+      margin-top: 30px;
+    }
+
+    .workshop-gallery h3 {
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .workshop-gallery p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .gallery-item {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .gallery-image-container {
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+      border-radius: 15px 15px 0 0;
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.1);
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+
+    .gallery-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 5px 15px rgba(24, 210, 110, 0.3);
+    }
+
+    /* Add a subtle pulse animation to indicate clickability */
+    .gallery-image-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .gallery-item:hover .gallery-image-container::after {
+      border-color: rgba(24, 210, 110, 0.5);
+      box-shadow: 0 0 25px rgba(24, 210, 110, 0.3);
+    }
+
+    /* Add a visible click indicator */
+    .gallery-image-container::before {
+      content: '🔍';
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(24, 210, 110, 0.9);
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 50%;
+      font-size: 14px;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 2;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .gallery-item:hover .gallery-image-container::before {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    /* Add a click instruction text */
+    .gallery-item::after {
+      content: 'Click to view full image';
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+      z-index: 3;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-overlay-content {
+      text-align: center;
+      color: #fff;
+    }
+
+    .gallery-overlay-content i {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #18d26e;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery-overlay-content p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .gallery-caption {
+      padding: 15px 20px;
+      text-align: center;
+    }
+
+    .gallery-caption small {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .gallery-image-container {
+        height: 250px;
+      }
+      
+      .workshop-gallery {
+        padding: 20px;
+      }
+    }
+  </style>
 
 </body>
 

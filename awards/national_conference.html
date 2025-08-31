@@ -127,6 +127,201 @@
     #portfolio-details .portfolio-description {
       margin-bottom: 20px;
     }
+
+    /* Competition Gallery Styles */
+    .competition-gallery {
+      padding: 30px;
+      margin-top: 30px;
+    }
+
+    .competition-gallery h3 {
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .competition-gallery p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .gallery-item {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .gallery-image-container {
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+      border-radius: 15px 15px 0 0;
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.1);
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+
+    .gallery-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 5px 15px rgba(24, 210, 110, 0.3);
+    }
+
+    .gallery-item:hover .gallery-image {
+      transform: scale(1.05);
+    }
+
+    /* Add a subtle pulse animation to indicate clickability */
+    .gallery-image-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .gallery-item:hover .gallery-image-container::after {
+      border-color: rgba(24, 210, 110, 0.5);
+      box-shadow: 0 0 25px rgba(24, 210, 110, 0.3);
+    }
+
+    /* Add a visible click indicator */
+    .gallery-image-container::before {
+      content: '🔍';
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(24, 210, 110, 0.9);
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 50%;
+      font-size: 14px;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 2;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .gallery-item:hover .gallery-image-container::before {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    /* Add a click instruction text */
+    .gallery-item::after {
+      content: 'Click to view full image';
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+      z-index: 3;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-overlay-content {
+      text-align: center;
+      color: #fff;
+    }
+
+    .gallery-overlay-content i {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #18d26e;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery-overlay-content p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .gallery-caption {
+      padding: 15px 20px;
+      text-align: center;
+    }
+
+    .gallery-caption small {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .gallery-image-container {
+        height: 250px;
+      }
+      
+      .competition-gallery {
+        padding: 20px;
+      }
+    }
   </style>
 
 
@@ -205,12 +400,21 @@
               <div class="swiper-wrapper align-items-center">
 
                 <div class="swiper-slide neumorphic">
-                  <img src="assets/img/portfolio/nptel/IOT.jpg" alt="Certification Image 1">
+                  <img src="assets/img/portfolio/national conference/20250219_230941.jpg" alt="Certification Image 1">
                 </div>
 
                 <div class="swiper-slide neumorphic">
-                  <img src="assets/img/portfolio/nptel/english.jpg" alt="Certification Image 2">
+                  <img src="assets/img/portfolio/national conference/Photo from 😉.jpg" alt="Certification Image 2">
                 </div>
+
+                <div class="swiper-slide neumorphic">
+                  <img src="assets/img/portfolio/national conference/20250320_231637.jpg" alt="Certification Image 2">
+                </div>
+
+                <div class="swiper-slide neumorphic">
+                  <img src="assets/img/portfolio/national conference/National conference_page-0001.jpg" alt="Certification Image 2">
+                </div>
+
 
               </div>
               <div class="swiper-pagination"></div>
@@ -221,18 +425,92 @@
             <div class="portfolio-info neumorphic">
               <h3>Certificate Information</h3>
               <ul>
-                <li><strong>Category</strong>: Certificate</li>
-                <li><strong>Source</strong>: NPTEL</li>
-                <li><strong>Date</strong>: JULY-DEC 2024</li>
-                <li><strong>Company Website</strong>: <a href="https://nptel.ac.in/">NPTEL</a></li>
+                <li><strong>Category</strong>: National Conference</li>
+                <li><strong>Source</strong>: Multiple Conferences</li>
+                <li><strong>Date</strong>: 2024 - 2025</li>
               </ul>
             </div>
             <div class="portfolio-description neumorphic">
               <h2>Certificate with Topics</h2>
-              <h5>1. Introduction to Internet of Things</h5>
-              <h5>2. Technical English for Engineers</h5>
+              <h5>1. National Conference on Insights and Innovation Exploring Business,Technology and Human Behaviour</h5>
+              <h5>2. National Conference on Connecting Intelligent Platforms for Harnessing Eco-Friendly and Resilent 6G with AI,Blockchain and IOT</h5>
+              <h5>3. National Conference on Biotechnological Advances in Biomedical,Environmental and Agricultural Technology</h5>
+              <h5>4. National Conference on Recent Trends in Analytics and Computing Technologies</h5>
             </div>
           </div>
+        </div>
+
+        <!-- ======= Competition Gallery Section ======= -->
+        <div class="row mt-5">
+          <div class="col-12">
+            <div class="competition-gallery neumorphic">
+              <h3 class="text-center mb-4">
+                <i class="bi bi-camera-fill me-2"></i>
+                Competition Participation Gallery
+              </h3>
+              <p class="text-center mb-4">Photos captured during the national conference competitions and events</p>
+              
+              <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                  <div class="gallery-image-container">
+                    <img src="assets/img/portfolio/national conference/proof/20250219_102738AMByGPSMapCamera.jpg" 
+                         alt="" 
+                         class="gallery-image"
+                         data-gallery="competition-gallery"
+                         title="Click to view full image">
+                    <div class="gallery-overlay">
+                      <div class="gallery-overlay-content">
+                        <i class="bi bi-zoom-in"></i>
+                        <p>Click to view</p>
+                      </div>
+                    </div>
+                  </div>
+                                     <div class="gallery-caption">
+                     <small>February 19, 2025</small>
+                   </div>
+                </div>
+
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                  <div class="gallery-image-container">
+                    <img src="assets/img/portfolio/national conference/proof/IMG-20250219-WA0017.jpg" 
+                         alt="" 
+                         class="gallery-image"
+                         data-gallery="competition-gallery"
+                         title="Click to view full image">
+                    <div class="gallery-overlay">
+                      <div class="gallery-overlay-content">
+                        <i class="bi bi-zoom-in"></i>
+                        <p>Click to view</p>
+                      </div>
+                    </div>
+                  </div>
+                                     <div class="gallery-caption">
+                     <small>February 19, 2025</small>
+                   </div>
+                </div>
+
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                  <div class="gallery-image-container">
+                    <img src="assets/img/portfolio/national conference/proof/20250227_100143amByGPSMapCamera.jpg" 
+                         alt="" 
+                         class="gallery-image"
+                         data-gallery="competition-gallery"
+                         title="Click to view full image">
+                    <div class="gallery-overlay">
+                      <div class="gallery-overlay-content">
+                        <i class="bi bi-zoom-in"></i>
+                        <p>Click to view</p>
+                      </div>
+                    </div>
+                  </div>
+                                     <div class="gallery-caption">
+                     <small>February 27, 2025</small>
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         </div>
 
@@ -267,6 +545,160 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Custom Gallery Script -->
+  <script>
+    // Initialize AOS animations
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+
+    // Gallery lightbox functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Gallery script loaded');
+      
+      // Try GLightbox first
+      if (typeof GLightbox !== 'undefined') {
+        console.log('GLightbox found, initializing...');
+        try {
+          const lightbox = GLightbox({
+            selector: '.gallery-image',
+            touchNavigation: true,
+            loop: true
+          });
+          console.log('GLightbox initialized successfully');
+        } catch (error) {
+          console.error('GLightbox error:', error);
+          initCustomLightbox();
+        }
+      } else {
+        console.log('GLightbox not found, using custom lightbox');
+        initCustomLightbox();
+      }
+
+      function initCustomLightbox() {
+        console.log('Initializing custom lightbox');
+        const galleryImages = document.querySelectorAll('.gallery-image');
+        
+        galleryImages.forEach((image, index) => {
+          image.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Image clicked:', this.src);
+            openCustomLightbox(this.src, this.alt);
+          });
+        });
+      }
+
+      function openCustomLightbox(imageSrc, imageAlt) {
+        // Create lightbox overlay
+        const lightbox = document.createElement('div');
+        lightbox.className = 'custom-lightbox-overlay';
+        lightbox.innerHTML = `
+          <div class="custom-lightbox-content">
+            <img src="${imageSrc}" alt="${imageAlt}">
+            <button class="custom-lightbox-close">&times;</button>
+          </div>
+        `;
+        
+        // Add lightbox styles
+        const style = document.createElement('style');
+        style.textContent = `
+          .custom-lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+          
+          .custom-lightbox-overlay.show {
+            opacity: 1;
+          }
+          
+          .custom-lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+          }
+          
+          .custom-lightbox-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+            max-height: 90vh;
+          }
+          
+          .custom-lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+          }
+          
+          .custom-lightbox-close:hover {
+            background: rgba(24, 210, 110, 0.8);
+            transform: scale(1.1);
+          }
+        `;
+        
+        document.head.appendChild(style);
+        document.body.appendChild(lightbox);
+        
+        // Show lightbox with animation
+        setTimeout(() => lightbox.classList.add('show'), 10);
+        
+        // Close lightbox functionality
+        const closeLightbox = () => {
+          lightbox.classList.remove('show');
+          setTimeout(() => {
+            document.body.removeChild(lightbox);
+            document.head.removeChild(style);
+          }, 300);
+        };
+        
+        lightbox.addEventListener('click', function(e) {
+          if (e.target === lightbox) {
+            closeLightbox();
+          }
+        });
+        
+        const closeBtn = lightbox.querySelector('.custom-lightbox-close');
+        closeBtn.addEventListener('click', closeLightbox);
+        
+        // Close on Escape key
+        const escapeHandler = function(e) {
+          if (e.key === 'Escape') {
+            closeLightbox();
+            document.removeEventListener('keydown', escapeHandler);
+          }
+        };
+        document.addEventListener('keydown', escapeHandler);
+      }
+    });
+  </script>
 
 </body>
 
