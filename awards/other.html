@@ -532,12 +532,23 @@
       }
 
       function openCustomLightbox(imageSrc, imageAlt) {
+        // Find the caption text for this image
+        const imageElement = document.querySelector(`img[src="${imageSrc}"]`);
+        let captionText = '';
+        if (imageElement) {
+          const captionElement = imageElement.closest('.gallery-item').querySelector('.gallery-caption small');
+          if (captionElement) {
+            captionText = captionElement.textContent;
+          }
+        }
+        
         // Create lightbox overlay
         const lightbox = document.createElement('div');
         lightbox.className = 'custom-lightbox-overlay';
         lightbox.innerHTML = `
           <div class="custom-lightbox-content">
             <img src="${imageSrc}" alt="${imageAlt}">
+            ${captionText ? `<div class="lightbox-caption">${captionText}</div>` : ''}
             <button class="custom-lightbox-close">&times;</button>
           </div>
         `;
@@ -568,6 +579,7 @@
             position: relative;
             max-width: 90%;
             max-height: 90%;
+            text-align: center;
           }
           
           .custom-lightbox-content img {
@@ -601,6 +613,18 @@
           .custom-lightbox-close:hover {
             background: rgba(24, 210, 110, 0.8);
             transform: scale(1.1);
+          }
+          
+          .lightbox-caption {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: 15px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
           }
         `;
         
@@ -817,6 +841,17 @@
       font-weight: 500;
     }
 
+    /* GLightbox custom styling for centered captions */
+    .glightbox-caption {
+      text-align: center !important;
+      font-size: 18px !important;
+      font-weight: 500 !important;
+      background: rgba(0, 0, 0, 0.8) !important;
+      padding: 15px 25px !important;
+      border-radius: 25px !important;
+      color: #fff !important;
+    }
+    
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .gallery-grid {
