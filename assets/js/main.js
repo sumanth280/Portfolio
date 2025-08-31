@@ -173,6 +173,14 @@
 
       let portfolioFilters = select('#portfolio-flters li', true);
 
+      // Apply initial "All" filter to exclude internships on page load
+      portfolioIsotope.arrange({
+        filter: function(item) {
+          // Show all items except those with filter-card class (internships)
+          return !item.classList.contains('filter-card');
+        }
+      });
+
       on('click', '#portfolio-flters li', function (e) {
         e.preventDefault();
         portfolioFilters.forEach(function (el) {
@@ -180,9 +188,22 @@
         });
         this.classList.add('filter-active');
 
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
+        let filterValue = this.getAttribute('data-filter');
+        
+        // Special handling for "All" filter to exclude internships
+        if (filterValue === '.filter-star, .filter-con, .filter-app, .filter-web, .filter-shop') {
+          portfolioIsotope.arrange({
+            filter: function(item) {
+              // Show all items except those with filter-card class
+              return !item.classList.contains('filter-card');
+            }
+          });
+        } else {
+          portfolioIsotope.arrange({
+            filter: filterValue
+          });
+        }
+        
         portfolioIsotope.on('arrangeComplete', function () {
           AOS.refresh()
         });
