@@ -1,6 +1,6 @@
 /**
 * URL: https://cdn.emailjs.com/dist/email.min.js
-* Author: Jayanth
+* Author: Sumanth Nerella
 */
 (function () {
   "use strict";

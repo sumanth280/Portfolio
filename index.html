@@ -329,8 +329,7 @@
               </div>
 
               <div class="modern-progress-card">
-                <span class="skill-flex"><i class="devicon-html5-plain colored"></i> HTML <i
-                    class="val">60%</i></span>
+                <span class="skill-flex"><i class="devicon-html5-plain colored"></i> HTML <i class="val">60%</i></span>
                 <div class="progress-bar-wrap">
                   <div class="progress-bar-modern" style="width: 60%;"></div>
                 </div>
@@ -377,8 +376,7 @@
               </div>
 
               <div class="modern-progress-card">
-                <span class="skill-flex"><i class="devicon-css3-plain colored"></i> CSS <i
-                    class="val">60%</i></span>
+                <span class="skill-flex"><i class="devicon-css3-plain colored"></i> CSS <i class="val">60%</i></span>
                 <div class="progress-bar-wrap">
                   <div class="progress-bar-modern" style="width: 60%;"></div>
                 </div>
@@ -1159,182 +1157,137 @@
 
 
     <section id="projects" class="projects">
-  <div class="container">
-    <div class="section-title">
-      <h2>My Projects</h2>
-      <p>A selection of my recent work. Swipe or use arrows to explore.</p>
-    </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>My Projects</h2>
+          <p>A selection of my recent work. Click the button below to see the full portfolio.</p>
+        </div>
 
-    <!-- 🔹 Carousel Wrapper -->
-    <div class="carousel">
-      <button class="carousel-btn prev">&#10094;</button>
-      <div class="carousel-track">
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000" alt="Finger Tracking Gesture Control">
-          <h3>Finger Tracking Gesture Control</h3>
-        </div>
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1000" alt="WhatsApp Chat Parser">
-          <h3>WhatsApp Chat Parser</h3>
-        </div>
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1581091215367-59ab6d68d5d0?w=1000" alt="Smart Composting Cap">
-          <h3>Smart Composting Cap</h3>
-        </div>
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1000" alt="MindoraGPT">
-          <h3>MindoraGPT</h3>
-        </div>
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1000" alt="BioPulse">
-          <h3>BioPulse</h3>
-        </div>
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=1000" alt="AI Stock Analyzer">
-          <h3>AI Stock Analyzer</h3>
+        <div class="projects-container">
+          <div class="marquee-container">
+            <div class="marquee-row" data-speed="0.6" data-direction="left">
+              <div class="marquee-content">
+                <img src="assets/img/portfolio/finger.png" alt="Finger Tracking Gesture Control">
+                <img src="assets/img/portfolio/wa2.png" alt="WhatsApp Chat Parser">
+                <img src="assets/img/portfolio/composting.png" alt="Smart Composting Cap">
+                <img src="assets/img/portfolio/mind.png" alt="MindoraGPT ">
+                <img src="assets/img/portfolio/dna.png" alt="BioPulse">
+              </div>
+            </div>
+          </div>
+
+          <div class="view-projects-button-wrapper">
+            <a href="projects.html" class="btn-view-projects">View All Projects</a>
+          </div>
         </div>
       </div>
-      <button class="carousel-btn next">&#10095;</button>
-    </div>
+    </section>
+    <style>
+      .projects {
+        text-align: center;
+        padding: 2rem 0;
+      }
 
-    <!-- 🔹 View All Button -->
-    <div class="view-projects-button-wrapper">
-      <a href="projects.html" class="btn-view-projects">View All Projects</a>
-    </div>
-  </div>
-</section>
+      .projects .section-title {
+        text-align: left;
+        margin-left: 10px;
+      }
 
-<style>
-/* Section */
-.projects {
-  text-align: center;
-  margin: 3rem 0;
-}
+      .projects .projects-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
 
-.projects .section-title {
-  text-align: center;
-  margin-bottom: 2rem;
-}
+      .marquee-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        overflow: hidden;
+      }
 
-/* Carousel */
-.carousel {
-  position: relative;
-  overflow: hidden;
-  max-width: 1000px;
-  margin: auto;
-  border-radius: 14px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.2);
-}
+      .marquee-row {
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+      }
 
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
+      .marquee-content {
+        display: inline-flex;
+        gap: 20px;
+        will-change: transform;
+      }
 
-.carousel-item {
-  min-width: 100%;
-  box-sizing: border-box;
-  text-align: center;
-}
+      .marquee-content img {
+        height: 200px;
+        border-radius: 12px;
+        object-fit: cover;
+        flex-shrink: 0;
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        /* Added box shadow */
+      }
 
-.carousel-item img {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  display: block;
-}
+      .marquee-content img:hover {
+        transform: scale(1.05);
+      }
 
-.carousel-item h3 {
-  margin: 15px 0;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #333;
-}
+      .view-projects-button-wrapper {
+        margin-top: 30px;
+      }
 
-/* Buttons */
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2rem;
-  background: rgba(0,0,0,0.5);
-  color: #fff;
-  border: none;
-  padding: 10px 16px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: background 0.3s ease;
-  z-index: 2;
-}
-.carousel-btn:hover {
-  background: rgba(0,0,0,0.8);
-}
-.carousel-btn.prev {
-  left: 15px;
-}
-.carousel-btn.next {
-  right: 15px;
-}
+      .btn-view-projects {
+        display: inline-block;
+        padding: 14px 40px;
+        border-radius: 50px;
+        background-color: #343a40;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
 
-/* Button */
-.view-projects-button-wrapper {
-  margin-top: 25px;
-}
-.btn-view-projects {
-  display: inline-block;
-  padding: 14px 40px;
-  border-radius: 50px;
-  background-color: #343a40;
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.btn-view-projects:hover {
-  background-color: #000;
-  transform: translateY(-2px);
-}
+      .btn-view-projects:hover {
+        background-color: #000;
+        transform: translateY(-2px);
+      }
+    </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll(".marquee-row").forEach(row => {
+          const content = row.querySelector(".marquee-content");
+          // Duplicate content for a seamless loop
+          content.innerHTML += content.innerHTML;
 
-/* Responsive */
-@media (max-width: 768px) {
-  .carousel-item img {
-    height: 260px;
-  }
-}
-</style>
+          let speed = parseFloat(row.dataset.speed);
+          if (window.innerWidth < 768) speed *= 2;
 
-<script>
-const track = document.querySelector(".carousel-track");
-const items = document.querySelectorAll(".carousel-item");
-const prevBtn = document.querySelector(".carousel-btn.prev");
-const nextBtn = document.querySelector(".carousel-btn.next");
+          const direction = row.dataset.direction || "left";
+          let x = 0;
 
-let index = 0;
+          function step() {
+            if (direction === "left") {
+              x -= speed;
+              // Reset position when the content has scrolled halfway
+              if (x <= -content.scrollWidth / 2) {
+                x = 0;
+              }
+            } else { // This part is now unused but kept for reference
+              x += speed;
+              if (x >= 0) {
+                x = -content.scrollWidth / 2;
+              }
+            }
+            content.style.transform = `translateX(${x}px)`;
+            requestAnimationFrame(step);
+          }
 
-function updateCarousel() {
-  track.style.transform = `translateX(-${index * 100}%)`;
-}
-
-// Next
-nextBtn.addEventListener("click", () => {
-  index = (index + 1) % items.length;
-  updateCarousel();
-});
-
-// Prev
-prevBtn.addEventListener("click", () => {
-  index = (index - 1 + items.length) % items.length;
-  updateCarousel();
-});
-
-// Auto Slide (every 5s)
-setInterval(() => {
-  index = (index + 1) % items.length;
-  updateCarousel();
-}, 5000);
-</script>
-
-
+          step();
+        });
+      });
+    </script>
 
 
     <!-- ======= Education Section ======= -->
@@ -1691,7 +1644,8 @@ setInterval(() => {
         <div class="row" data-aos="fade-up">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
-              <li data-filter=".filter-star, .filter-con, .filter-app, .filter-web, .filter-shop" class="filter-active">All</li>
+              <li data-filter=".filter-star, .filter-con, .filter-app, .filter-web, .filter-shop" class="filter-active">
+                All</li>
               <li data-filter=".filter-star">
                 Featured <i class="fas fa-star" style="color:gold;"></i>
               </li>
@@ -1984,7 +1938,8 @@ setInterval(() => {
                 <div class="col-lg-4 col-md-6 portfolio-item filter-shop">
                   <div class="award-card">
                     <div class="award-card-inner">
-                      <img src="awards/assets/img/portfolio/certificates_logos/workshop.jpg" class="img-fluid" alt="Workshop">
+                      <img src="awards/assets/img/portfolio/certificates_logos/workshop.jpg" class="img-fluid"
+                        alt="Workshop">
                       <div class="award-links">
                         <a href="awards/assets/img/portfolio/certificates_logos/workshop.jpg"
                           data-gallery="portfolioGallery" class="award-lightbox" title="Workshop"><i
